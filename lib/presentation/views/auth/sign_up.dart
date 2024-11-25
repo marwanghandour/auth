@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../widgets/custom_snack_bar.dart';
-import 'sign_in_view.dart';
 import '../../blocs/auth/auth_bloc.dart';
 import '../../blocs/auth/auth_event.dart';
 import '../../blocs/auth/auth_state.dart';
+import 'sign_in_view.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -105,7 +105,8 @@ class _SignUpPageState extends State<SignUpPage> {
                       MaterialPageRoute(builder: (context) => const SignInPage()),
                     );
                   } else if (state is AuthFailureState) {
-                    CustomSnackBar.show(context, state.message);
+                    CustomSnackBar.show(
+                      context, state.message);
                   }
                 },
                 child: BlocBuilder<AuthBloc, MyAuthState>(
@@ -113,7 +114,9 @@ class _SignUpPageState extends State<SignUpPage> {
                     if (state is AuthLoadingState) {
                       return const CircularProgressIndicator();
                     }
-                    return Container();
+                    else {
+                      return Container();
+                    }
                   },
                 ),
               ),
