@@ -4,7 +4,7 @@ import '../../widgets/custom_snack_bar.dart';
 import '../../blocs/auth/auth_bloc.dart';
 import '../../blocs/auth/auth_event.dart';
 import '../../blocs/auth/auth_state.dart';
-import 'sign_in_view.dart';
+import 'profile_page.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -100,9 +100,13 @@ class _SignUpPageState extends State<SignUpPage> {
               BlocListener<AuthBloc, MyAuthState>(
                 listener: (context, state) {
                   if (state is AuthSuccessState) {
+                    CustomSnackBar.show(
+                      context, 'Signed Up as ${state.email}',
+                      color: Colors.green,
+                      );
                     Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(builder: (context) => const SignInPage()),
+                      MaterialPageRoute(builder: (context) => const ProfilePage()),
                     );
                   } else if (state is AuthFailureState) {
                     CustomSnackBar.show(
@@ -121,11 +125,11 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
               ),
               const SizedBox(height: 16),
-              TextButton(
-                onPressed: () {
+              GestureDetector(
+                onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const SignInPage()),
+                    MaterialPageRoute(builder: (context) => const ProfilePage()),
                   );
                 },
                 child: const Text('Already have an account? Sign In'),

@@ -4,7 +4,7 @@ import '../../blocs/auth/auth_bloc.dart';
 import '../../blocs/auth/auth_event.dart';
 import '../../blocs/auth/auth_state.dart';
 import '../../widgets/custom_snack_bar.dart';
-import 'prodile_page.dart';
+import 'profile_page.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({super.key});
@@ -81,6 +81,10 @@ class _SignInPageState extends State<SignInPage> {
               BlocListener<AuthBloc, MyAuthState>(
                 listener: (context, state) {
                   if (state is AuthSuccessState) {
+                    CustomSnackBar.show(
+                      context, 'Signed In as ${state.email}',
+                      color: Colors.green,
+                      );
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(builder: (context) => const ProfilePage()),

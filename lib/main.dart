@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'data/sources/supabase_auth_sources.dart';
 import 'presentation/blocs/auth/auth_bloc.dart';
-import 'presentation/views/auth/sign_up.dart';
+import 'presentation/views/auth/sign_in_view.dart';
 
 void main() async{
    WidgetsFlutterBinding.ensureInitialized();
@@ -25,7 +25,7 @@ void main() async{
              create: (context) => AuthBloc(authSource),
               child: const MaterialApp( 
                 debugShowCheckedModeBanner: false,
-                home: SignUpPage(),
+                home: SignInPage(),
                        ),
                         );
                          }

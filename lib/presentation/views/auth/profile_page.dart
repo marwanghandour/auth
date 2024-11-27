@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:notes/presentation/blocs/auth/auth_state.dart';
-import 'package:notes/presentation/views/auth/sign_in_view.dart';
-
 import '../../blocs/auth/auth_bloc.dart';
 import '../../blocs/auth/auth_event.dart';
+import '../../blocs/auth/auth_state.dart';
+import 'sign_in_view.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
